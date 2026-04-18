@@ -1,5 +1,6 @@
 package com.example.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -97,15 +98,15 @@ public class Invoice {
     public void setDetails(List<InvoiceDetail> details) {
         this.details = details;
     }
-
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "customer_id")
     private customers customer;
-
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "template_id")
     private InvoiceTemplate template;
-
+    @JsonIgnore
     @OneToMany(mappedBy = "invoice")
     private List<InvoiceDetail> details;
 }

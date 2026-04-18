@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface InvoiceRepository extends JpaRepository<Invoice, Integer> {
     List<Invoice> findByCustomerId(Integer customerId);
+
+    boolean existsByTemplateId(Integer id);
 }

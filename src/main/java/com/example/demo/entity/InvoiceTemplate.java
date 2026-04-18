@@ -1,5 +1,6 @@
 package com.example.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -12,10 +13,11 @@ public class InvoiceTemplate {
     private Integer id;
     @Column(name = "template_name")
     private String templateName;
-    @Column(name = "content_html")
+    @Column(name = "content_html", columnDefinition = "LONGTEXT")
     private String contentHtml;
     @Column(name = "is_default")
-    private Boolean isDefault;
+    private Boolean isDefault=false;
+    @JsonIgnore
     @OneToMany(mappedBy = "template")
     private List<Invoice> invoices;
 

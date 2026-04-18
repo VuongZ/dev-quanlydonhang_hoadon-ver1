@@ -1,5 +1,6 @@
 package com.example.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -12,9 +13,10 @@ public class customers {
     private int id;
     private String name;
     @Column(name = "tax_code")
-    private String taxcode;
+    private String taxCode;
     private String address;
     private String phone;
+    @JsonIgnore
     @OneToMany(mappedBy = "customer")
     private List<Invoice> invoices;
 
@@ -35,11 +37,11 @@ public class customers {
     }
 
     public String getTaxcode() {
-        return taxcode;
+        return taxCode;
     }
 
     public void setTaxcode(String taxcode) {
-        this.taxcode = taxcode;
+        this.taxCode = taxcode;
     }
 
     public String getAddress() {
